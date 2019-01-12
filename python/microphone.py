@@ -14,6 +14,11 @@ def start_stream(callback):
                     frames_per_buffer=frames_per_buffer)
     overflows = 0
     prev_ovf_time = time.time()
+    
+    #Display the mic sample rate of computer to modify setting in config.py if necessary
+    GG = p.get_device_info_by_index(0)['defaultSampleRate']
+    print('Mic frequency:', GG)  
+    
     while True:
         try:
             #y = np.fromstring(stream.read(frames_per_buffer), dtype=np.int16)
